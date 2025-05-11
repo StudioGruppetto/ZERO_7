@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://86gl03dyfr2"]
+
+[ext_resource type="Script" uid="uid://bac5drt6hlyn6" path="res://Scripts/L1S2.gd" id="1_p5pfr"]
+[ext_resource type="Texture2D" uid="uid://bw8sd3okimd8f" path="res://Assets/Gma jam/s2l.png" id="1_rpcsf"]
+[ext_resource type="Texture2D" uid="uid://ox56evvhsvmw" path="res://Assets/Gma jam/s2u.png" id="2_ccpsx"]
+[ext_resource type="Texture2D" uid="uid://y1gxxh3rp0rx" path="res://Assets/Gma jam/cellbg.png" id="3_kktf7"]
+[ext_resource type="Texture2D" uid="uid://ff5odfc0goyt" path="res://Assets/Gma jam/cell gate.png" id="4_g1ywr"]
+[ext_resource type="Texture2D" uid="uid://daky5b80i1m84" path="res://Assets/Gma jam/light.png" id="5_tfi3g"]
+[ext_resource type="Texture2D" uid="uid://ci0wm7aqdusnv" path="res://Assets/Gma jam/dustbin.png" id="6_h065s"]
+[ext_resource type="Texture2D" uid="uid://cp84wtcjhp2xo" path="res://Assets/Gma jam/cam hold.png" id="7_tfi3g"]
+[ext_resource type="Texture2D" uid="uid://ci6nmy6lysr8c" path="res://Assets/Gma jam/box wood.png" id="7_wdxwn"]
+[ext_resource type="Texture2D" uid="uid://bs8adbjr85gwm" path="res://Assets/Gma jam/cam.png" id="8_h065s"]
+[ext_resource type="Texture2D" uid="uid://j4jh0ub5i56b" path="res://Assets/Gma jam/hall arrow.png" id="8_p5pfr"]
+[ext_resource type="Texture2D" uid="uid://dsf8kwdw7atgk" path="res://Assets/Gma jam/cam area.png" id="8_wdxwn"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="9_kktf7"]
+[ext_resource type="Script" uid="uid://dbpclcvjdry7m" path="res://Scripts/democam.gd" id="9_wdxwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpsx"]
+size = Vector2(1912.5, 742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kktf7"]
+size = Vector2(226, 193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1ywr"]
+size = Vector2(118, 165.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfi3g"]
+size = Vector2(54, 1070)
+
+[node name="L1S2" type="Node2D"]
+script = ExtResource("1_p5pfr")
+
+[node name="S2l" type="Sprite2D" parent="."]
+position = Vector2(960, 909)
+texture = ExtResource("1_rpcsf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="S2l"]
+position = Vector2(-960, -909)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="S2l/StaticBody2D"]
+position = Vector2(955.75, 369)
+shape = SubResource("RectangleShape2D_ccpsx")
+
+[node name="S2u" type="Sprite2D" parent="S2l/StaticBody2D"]
+position = Vector2(963, 371)
+texture = ExtResource("2_ccpsx")
+
+[node name="HallArrow" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(613, -204)
+texture = ExtResource("8_p5pfr")
+
+[node name="Light" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(-429, -102)
+texture = ExtResource("5_tfi3g")
+
+[node name="Cellbg" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(-935, 174)
+texture = ExtResource("3_kktf7")
+
+[node name="CellGate" type="Sprite2D" parent="S2l/StaticBody2D/S2u/Cellbg"]
+position = Vector2(0, -2)
+texture = ExtResource("4_g1ywr")
+
+[node name="CamHold" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(10, -254)
+texture = ExtResource("7_tfi3g")
+
+[node name="Cam" type="Sprite2D" parent="S2l/StaticBody2D/S2u/CamHold"]
+position = Vector2(29, -40)
+texture = ExtResource("8_h065s")
+script = ExtResource("9_wdxwn")
+
+[node name="CamArea" type="Sprite2D" parent="S2l/StaticBody2D/S2u/CamHold/Cam"]
+position = Vector2(-281, 453)
+texture = ExtResource("8_wdxwn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="S2l/StaticBody2D"]
+position = Vector2(1303, 677.5)
+shape = SubResource("RectangleShape2D_kktf7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="S2l/StaticBody2D"]
+position = Vector2(1636, 701.75)
+shape = SubResource("RectangleShape2D_g1ywr")
+
+[node name="Dustbin" type="Sprite2D" parent="S2l/StaticBody2D"]
+position = Vector2(1636, 692)
+texture = ExtResource("6_h065s")
+
+[node name="BoxWood" type="Sprite2D" parent="S2l/StaticBody2D"]
+position = Vector2(1304, 678)
+texture = ExtResource("7_wdxwn")
+
+[node name="scene_changer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_changer"]
+position = Vector2(1910, 540)
+shape = SubResource("RectangleShape2D_tfi3g")
+
+[node name="Player" parent="." instance=ExtResource("9_kktf7")]
+position = Vector2(111, 839)
+
+[connection signal="body_entered" from="scene_changer" to="." method="_on_scene_changer_body_entered"]

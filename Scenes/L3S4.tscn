@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdbmd57jmh53a"]
+
+[ext_resource type="Script" uid="uid://b7pg4rnkx8wl0" path="res://Scripts/L3S4.gd" id="1_61fly"]
+[ext_resource type="Texture2D" uid="uid://b7ldbxnhh763l" path="res://Assets/p2assets/l3s3bg.png" id="1_i5d7w"]
+[ext_resource type="Texture2D" uid="uid://c8xsl4q5u7y8d" path="res://Assets/p2assets/l3s3left.png" id="2_0p6vi"]
+[ext_resource type="Texture2D" uid="uid://wjwnnai2eu7g" path="res://Assets/p2assets/l3s3right.png" id="3_61fly"]
+[ext_resource type="Texture2D" uid="uid://dujmqqilijjyt" path="res://Assets/p2assets/l3s3down.png" id="4_ju1i1"]
+[ext_resource type="Texture2D" uid="uid://chrod7fj777n" path="res://Assets/p2assets/vent.png" id="5_fb1bl"]
+[ext_resource type="Texture2D" uid="uid://daky5b80i1m84" path="res://Assets/Gma jam/light.png" id="6_4yrnr"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="7_0p6vi"]
+
+[node name="L3S4" type="Node2D"]
+script = ExtResource("1_61fly")
+
+[node name="L3s3Bg" type="Sprite2D" parent="."]
+position = Vector2(946, 436)
+texture = ExtResource("1_i5d7w")
+
+[node name="L3s3Left" type="Sprite2D" parent="L3s3Bg"]
+position = Vector2(-767, 100)
+texture = ExtResource("2_0p6vi")
+
+[node name="L3s3Right" type="Sprite2D" parent="L3s3Bg"]
+position = Vector2(738, 88)
+texture = ExtResource("3_61fly")
+
+[node name="L3s3Down" type="Sprite2D" parent="L3s3Bg"]
+position = Vector2(0, 514)
+texture = ExtResource("4_ju1i1")
+
+[node name="Light" type="Sprite2D" parent="L3s3Bg"]
+position = Vector2(280, -166)
+texture = ExtResource("6_4yrnr")
+
+[node name="Light2" type="Sprite2D" parent="L3s3Bg"]
+position = Vector2(-867, -178)
+texture = ExtResource("6_4yrnr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(255.75, 417)
+polygon = PackedVector2Array(247.25, -416, 1151.25, -420, 1151.25, 439, 259.25, 450)
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1407, -37, 1920, -33, 1920, 1072, 1396, 848)
+
+[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-2, -18, 511, -29, 518, 840, -25, 1087)
+
+[node name="CollisionShape2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(6, 39)
+polygon = PackedVector2Array(-33, 1003, 1913, 1003, 1918, 1042, -18, 1044)
+
+[node name="Vent" type="Sprite2D" parent="."]
+position = Vector2(1517, 806)
+texture = ExtResource("5_fb1bl")
+
+[node name="Player" parent="." instance=ExtResource("7_0p6vi")]
+position = Vector2(304, 975)
+
+[node name="Vent_entry" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Vent_entry"]
+polygon = PackedVector2Array(1484, 652, 1461, 910, 1688, 970, 1704, 939, 1690, 650)
+
+[connection signal="body_entered" from="Vent_entry" to="." method="_on_vent_entry_body_entered"]

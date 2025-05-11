@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8d0bu3yn5epk"]
+
+[ext_resource type="Script" uid="uid://fk0hij3wvn56" path="res://Scripts/L4S2.gd" id="1_ddtgu"]
+[ext_resource type="Texture2D" uid="uid://b5ubcdiepxacy" path="res://Assets/p3/l4s2bg.png" id="1_xvpdo"]
+[ext_resource type="Texture2D" uid="uid://b0dnrtpob4xfp" path="res://Assets/p2assets/walll.png" id="2_l7h1a"]
+[ext_resource type="Texture2D" uid="uid://dy1bg4urwtxrr" path="res://Assets/p3/l4s2down.png" id="3_ddtgu"]
+[ext_resource type="Texture2D" uid="uid://c0psj5i3f5td" path="res://Assets/p3/l4washed.png" id="4_3esad"]
+[ext_resource type="Texture2D" uid="uid://dncnkirxyd6a8" path="res://Assets/p3/drycloth.png" id="5_if15w"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="5_l7h1a"]
+[ext_resource type="PackedScene" uid="uid://jb53427i3iba" path="res://Scenes/gaurd.tscn" id="6_21gp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddtgu"]
+size = Vector2(278, 401)
+
+[node name="L4S2" type="Node2D"]
+script = ExtResource("1_ddtgu")
+
+[node name="L4s2Bg" type="Sprite2D" parent="."]
+position = Vector2(1930, 531)
+texture = ExtResource("1_xvpdo")
+
+[node name="Walll" type="Sprite2D" parent="."]
+position = Vector2(961, 585)
+texture = ExtResource("2_l7h1a")
+
+[node name="Walll2" type="Sprite2D" parent="Walll"]
+position = Vector2(1921, 0)
+texture = ExtResource("2_l7h1a")
+
+[node name="L4s2Down" type="Sprite2D" parent="Walll"]
+position = Vector2(976, 309)
+texture = ExtResource("3_ddtgu")
+
+[node name="L4Washed" type="Sprite2D" parent="Walll"]
+position = Vector2(-713, 275)
+texture = ExtResource("4_3esad")
+
+[node name="Player" parent="Walll" instance=ExtResource("5_l7h1a")]
+position = Vector2(-497, 205)
+
+[node name="Camera2D" type="Camera2D" parent="Walll/Player"]
+
+[node name="Drycloth" type="Sprite2D" parent="Walll"]
+position = Vector2(429, 285)
+texture = ExtResource("5_if15w")
+
+[node name="Drycloth6" type="Sprite2D" parent="Walll/Drycloth"]
+position = Vector2(-512, -13)
+texture = ExtResource("5_if15w")
+
+[node name="Drycloth2" type="Sprite2D" parent="Walll/Drycloth"]
+position = Vector2(449, -9)
+texture = ExtResource("5_if15w")
+
+[node name="Drycloth3" type="Sprite2D" parent="Walll/Drycloth"]
+position = Vector2(908, -5)
+texture = ExtResource("5_if15w")
+
+[node name="Drycloth4" type="Sprite2D" parent="Walll/Drycloth"]
+position = Vector2(1408, -31)
+texture = ExtResource("5_if15w")
+
+[node name="Drycloth5" type="Sprite2D" parent="Walll/Drycloth"]
+position = Vector2(1880, 11)
+texture = ExtResource("5_if15w")
+
+[node name="Gaurd" parent="." instance=ExtResource("6_21gp1")]
+position = Vector2(1038, 996)
+
+[node name="Gaurd2" parent="." instance=ExtResource("6_21gp1")]
+position = Vector2(2375, 1001)
+
+[node name="AnimatedSprite2D" parent="Gaurd2" index="0"]
+flip_h = true
+
+[node name="CollisionShape2D" parent="Gaurd2" index="1"]
+position = Vector2(-3, -15)
+
+[node name="next_scene" type="Area2D" parent="."]
+position = Vector2(3592, 689)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="next_scene"]
+position = Vector2(129, 190.5)
+shape = SubResource("RectangleShape2D_ddtgu")
+
+[connection signal="body_entered" from="next_scene" to="." method="_on_next_scene_body_entered"]
+
+[editable path="Gaurd"]
+[editable path="Gaurd2"]

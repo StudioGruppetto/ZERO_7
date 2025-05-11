@@ -1,0 +1,305 @@
+[gd_scene load_steps=12 format=3 uid="uid://bv6dpblqv1pm"]
+
+[ext_resource type="Script" uid="uid://c7rfn8mbk24er" path="res://Scripts/L4S3.gd" id="1_8wcmd"]
+[ext_resource type="Texture2D" uid="uid://bthrslmnnjlmo" path="res://Assets/p3/l4s3bg.png" id="2_6w1rr"]
+[ext_resource type="Texture2D" uid="uid://cnhxwl68d3kcl" path="res://Assets/p3/l4s3ground.png" id="3_khpbk"]
+[ext_resource type="Texture2D" uid="uid://b1dq1niahloxa" path="res://Assets/p3/l4s3left.png" id="4_m41vn"]
+[ext_resource type="Texture2D" uid="uid://ejyxmrey8k2d" path="res://Assets/p3/l4s3grassup.png" id="5_lhsod"]
+[ext_resource type="Texture2D" uid="uid://bi7bcscp3vlt8" path="res://Assets/p3/l4s3grassdown.png" id="6_pwm1s"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="7_qyxj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03gya"]
+size = Vector2(36.5, 37.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wcmd"]
+size = Vector2(442, 342)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w1rr"]
+size = Vector2(7716, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khpbk"]
+size = Vector2(7716, 811)
+
+[node name="L4S3" type="Node2D"]
+script = ExtResource("1_8wcmd")
+
+[node name="L4s3Bg" type="Sprite2D" parent="."]
+position = Vector2(3837, 173)
+texture = ExtResource("2_6w1rr")
+
+[node name="L4s3Ground" type="Sprite2D" parent="."]
+position = Vector2(3870, 977)
+texture = ExtResource("3_khpbk")
+
+[node name="L4s3Grassup" type="Sprite2D" parent="L4s3Ground"]
+position = Vector2(376, -197)
+scale = Vector2(2.44943, 1)
+texture = ExtResource("5_lhsod")
+
+[node name="L4s3Grassdown" type="Sprite2D" parent="L4s3Ground"]
+position = Vector2(-2381, 43)
+scale = Vector2(1.45788, 1)
+texture = ExtResource("6_pwm1s")
+
+[node name="L4s3Left" type="Sprite2D" parent="L4s3Ground"]
+position = Vector2(-2893, -184)
+texture = ExtResource("4_m41vn")
+
+[node name="Mines" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mines"]
+position = Vector2(2003, 870)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect" type="ColorRect" parent="Mines/CollisionShape2D"]
+offset_left = -10.0
+offset_top = -8.0
+offset_right = 9.0
+offset_bottom = 13.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Mines"]
+position = Vector2(2346, 976)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect2" type="ColorRect" parent="Mines/CollisionShape2D2"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 8.0
+offset_bottom = 11.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Mines"]
+position = Vector2(2565, 867)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect3" type="ColorRect" parent="Mines/CollisionShape2D3"]
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 11.0
+offset_bottom = 11.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Mines"]
+position = Vector2(2779, 925)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect4" type="ColorRect" parent="Mines/CollisionShape2D4"]
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 10.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Mines"]
+position = Vector2(3005, 851)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect5" type="ColorRect" parent="Mines/CollisionShape2D5"]
+offset_left = -142.0
+offset_top = 103.0
+offset_right = -123.0
+offset_bottom = 124.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Mines"]
+position = Vector2(2872, 969)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect6" type="ColorRect" parent="Mines/CollisionShape2D6"]
+offset_left = 128.0
+offset_top = -128.0
+offset_right = 147.0
+offset_bottom = -107.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Mines"]
+position = Vector2(3210, 954)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect7" type="ColorRect" parent="Mines/CollisionShape2D7"]
+offset_left = -15.0
+offset_top = -10.0
+offset_right = 4.0
+offset_bottom = 11.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Mines"]
+position = Vector2(3355, 863)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect8" type="ColorRect" parent="Mines/CollisionShape2D8"]
+offset_left = -6.0
+offset_top = -10.0
+offset_right = 13.0
+offset_bottom = 11.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Mines"]
+position = Vector2(3620, 1007)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect9" type="ColorRect" parent="Mines/CollisionShape2D9"]
+offset_left = -5.0
+offset_top = -9.0
+offset_right = 14.0
+offset_bottom = 12.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Mines"]
+position = Vector2(3821, 889)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect10" type="ColorRect" parent="Mines/CollisionShape2D10"]
+offset_left = -8.0
+offset_top = -10.0
+offset_right = 11.0
+offset_bottom = 11.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4005, 858)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect11" type="ColorRect" parent="Mines/CollisionShape2D11"]
+offset_left = -6.0
+offset_top = -10.0
+offset_right = 13.0
+offset_bottom = 11.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4074, 1008)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect12" type="ColorRect" parent="Mines/CollisionShape2D12"]
+offset_left = -8.0
+offset_top = -12.0
+offset_right = 11.0
+offset_bottom = 9.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4293, 872)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect13" type="ColorRect" parent="Mines/CollisionShape2D13"]
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 13.0
+offset_bottom = 16.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4506, 977)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect14" type="ColorRect" parent="Mines/CollisionShape2D14"]
+offset_left = -7.0
+offset_top = -13.0
+offset_right = 12.0
+offset_bottom = 8.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4811, 877)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect15" type="ColorRect" parent="Mines/CollisionShape2D15"]
+offset_left = -239.0
+offset_top = -27.0
+offset_right = -220.0
+offset_bottom = -6.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4580, 856)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect16" type="ColorRect" parent="Mines/CollisionShape2D16"]
+offset_left = -3.0
+offset_top = -13.0
+offset_right = 16.0
+offset_bottom = 8.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4580, 856)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect17" type="ColorRect" parent="Mines/CollisionShape2D17"]
+offset_left = 221.0
+offset_top = 9.0
+offset_right = 240.0
+offset_bottom = 30.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Mines"]
+position = Vector2(4945, 993)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect18" type="ColorRect" parent="Mines/CollisionShape2D18"]
+offset_left = -12.0
+offset_top = -13.0
+offset_right = 7.0
+offset_bottom = 8.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Mines"]
+position = Vector2(5047, 891)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect19" type="ColorRect" parent="Mines/CollisionShape2D19"]
+offset_left = -3.0
+offset_top = -12.0
+offset_right = 16.0
+offset_bottom = 9.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Mines"]
+position = Vector2(5273, 856)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect20" type="ColorRect" parent="Mines/CollisionShape2D20"]
+offset_left = -7.0
+offset_top = -10.0
+offset_right = 12.0
+offset_bottom = 11.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Mines"]
+position = Vector2(5445, 997)
+shape = SubResource("RectangleShape2D_03gya")
+
+[node name="ColorRect21" type="ColorRect" parent="Mines/CollisionShape2D21"]
+offset_left = -7.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 9.0
+color = Color(0.960784, 0.192157, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("7_qyxj4")]
+position = Vector2(1226, 871)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(92, -361)
+
+[node name="next_level" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="next_level"]
+position = Vector2(6688, 987)
+shape = SubResource("RectangleShape2D_8wcmd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(69, 1044)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3792, 73)
+shape = SubResource("RectangleShape2D_6w1rr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3799, -659.5)
+shape = SubResource("RectangleShape2D_khpbk")
+
+[connection signal="body_entered" from="Mines" to="." method="_on_mines_body_entered"]
+[connection signal="body_entered" from="next_level" to="." method="_on_next_level_body_entered"]

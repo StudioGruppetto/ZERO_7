@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://crfcgkfa2jh10"]
+
+[ext_resource type="PackedScene" uid="uid://jb53427i3iba" path="res://Scenes/gaurd.tscn" id="1_4skb5"]
+[ext_resource type="PackedScene" uid="uid://jo8n0uanvvmu" path="res://Scenes/Player.tscn" id="2_jpagm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5rmtk"]
+radius = 142.243
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Guard_area" type="Area2D" parent="."]
+position = Vector2(552, 296)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guard_area"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_5rmtk")
+
+[node name="Gaurd" parent="." instance=ExtResource("1_4skb5")]
+
+[node name="Player" parent="." instance=ExtResource("2_jpagm")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 325)

@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://de7bo2wm44ghp"]
+
+[ext_resource type="Script" uid="uid://c7p2ike1rnvfl" path="res://Scripts/L2S2.gd" id="1_06woy"]
+[ext_resource type="Texture2D" uid="uid://cbc0kjxtyu6kj" path="res://Assets/Gma jam/s1u.png" id="2_idhv1"]
+[ext_resource type="Texture2D" uid="uid://2mjp3b113b7" path="res://Assets/Gma jam/s1l.png" id="3_orpbr"]
+[ext_resource type="Texture2D" uid="uid://y1gxxh3rp0rx" path="res://Assets/Gma jam/cellbg.png" id="4_6831j"]
+[ext_resource type="Texture2D" uid="uid://ff5odfc0goyt" path="res://Assets/Gma jam/cell gate.png" id="5_0joyf"]
+[ext_resource type="Texture2D" uid="uid://c4q4cbxd6tegf" path="res://Assets/Gma jam/bed.png" id="6_bj3ya"]
+[ext_resource type="Texture2D" uid="uid://daky5b80i1m84" path="res://Assets/Gma jam/light.png" id="7_eua8g"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="8_64w64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idhv1"]
+size = Vector2(107, 97)
+
+[node name="L2S2" type="Node2D"]
+script = ExtResource("1_06woy")
+
+[node name="S1u" type="Sprite2D" parent="."]
+position = Vector2(964, 379)
+texture = ExtResource("2_idhv1")
+
+[node name="S1l" type="Sprite2D" parent="."]
+position = Vector2(961, 917)
+texture = ExtResource("3_orpbr")
+
+[node name="Cellbg" type="Sprite2D" parent="."]
+position = Vector2(1061, 547)
+texture = ExtResource("4_6831j")
+
+[node name="CellGate" type="Sprite2D" parent="Cellbg"]
+texture = ExtResource("5_0joyf")
+
+[node name="Unlock" type="Area2D" parent="Cellbg/CellGate"]
+position = Vector2(39, -25)
+
+[node name="Indication" type="ColorRect" parent="Cellbg/CellGate/Unlock"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cellbg/CellGate/Unlock"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_idhv1")
+
+[node name="UnlockTimer" type="Timer" parent="Cellbg/CellGate"]
+
+[node name="ProgressBar" type="ProgressBar" parent="Cellbg/CellGate"]
+offset_left = 102.0
+offset_top = -11.0
+offset_right = 227.0
+offset_bottom = 16.0
+
+[node name="Bed" type="Sprite2D" parent="Cellbg"]
+position = Vector2(-728, 198)
+texture = ExtResource("6_bj3ya")
+
+[node name="Light" type="Sprite2D" parent="Cellbg"]
+position = Vector2(-992, -265)
+texture = ExtResource("7_eua8g")
+
+[node name="Light2" type="Sprite2D" parent="Cellbg"]
+position = Vector2(459, -265)
+texture = ExtResource("7_eua8g")
+
+[node name="Player" parent="." instance=ExtResource("8_64w64")]
+position = Vector2(1022, 882)
+
+[connection signal="body_entered" from="Cellbg/CellGate/Unlock" to="." method="_on_unlock_body_entered"]
+[connection signal="body_exited" from="Cellbg/CellGate/Unlock" to="." method="_on_unlock_body_exited"]

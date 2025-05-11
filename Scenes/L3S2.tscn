@@ -1,0 +1,140 @@
+[gd_scene load_steps=15 format=3 uid="uid://coanc1ftf7d04"]
+
+[ext_resource type="Script" uid="uid://e8wat34v21gc" path="res://Scripts/L3S2.gd" id="1_6vvnf"]
+[ext_resource type="Texture2D" uid="uid://dpbpbtef57c43" path="res://Assets/p2assets/l3s2u.png" id="1_nj2oy"]
+[ext_resource type="Texture2D" uid="uid://b0dnrtpob4xfp" path="res://Assets/p2assets/walll.png" id="2_ei0p6"]
+[ext_resource type="Texture2D" uid="uid://5jliy2m3d88m" path="res://Assets/p2assets/l3s2l.png" id="2_rtsbj"]
+[ext_resource type="Texture2D" uid="uid://capof53jx1faq" path="res://Assets/p2assets/l3s2l2.png" id="3_2pttp"]
+[ext_resource type="Texture2D" uid="uid://cwfd6xhg48f7" path="res://Assets/p2assets/tanks.png" id="4_ei0p6"]
+[ext_resource type="Texture2D" uid="uid://blbnkdviayc4m" path="res://Assets/p2assets/colud1.png" id="5_6vvnf"]
+[ext_resource type="Texture2D" uid="uid://dobtpl5u36p51" path="res://Assets/p2assets/box1.png" id="6_nj2oy"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="7_rtsbj"]
+[ext_resource type="PackedScene" uid="uid://jb53427i3iba" path="res://Scenes/gaurd.tscn" id="8_2pttp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pttp"]
+size = Vector2(1925, 91)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ei0p6"]
+size = Vector2(1903.5, 734.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ei0p6"]
+bg_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvnf"]
+size = Vector2(47, 565)
+
+[node name="L3S2" type="Node2D"]
+script = ExtResource("1_6vvnf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 1001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(952.5, 35.5)
+shape = SubResource("RectangleShape2D_2pttp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(963.25, -628.25)
+shape = SubResource("RectangleShape2D_ei0p6")
+
+[node name="L3s2u" type="Sprite2D" parent="."]
+position = Vector2(964, 456)
+texture = ExtResource("1_nj2oy")
+
+[node name="Walll" type="Sprite2D" parent="L3s2u"]
+position = Vector2(-3, 166)
+texture = ExtResource("2_ei0p6")
+
+[node name="Colud1" type="Sprite2D" parent="L3s2u"]
+position = Vector2(-12, -231)
+texture = ExtResource("5_6vvnf")
+
+[node name="L3s2l" type="Sprite2D" parent="L3s2u"]
+position = Vector2(0, 414)
+texture = ExtResource("2_rtsbj")
+
+[node name="L3s2l2" type="Sprite2D" parent="L3s2u/L3s2l"]
+position = Vector2(-2, 166)
+texture = ExtResource("3_2pttp")
+
+[node name="Box1" type="Sprite2D" parent="L3s2u"]
+position = Vector2(-275, 240)
+texture = ExtResource("6_nj2oy")
+
+[node name="Guard_area" type="Area2D" parent="L3s2u"]
+position = Vector2(-22, 288)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="L3s2u/Guard_area"]
+position = Vector2(41, -6)
+polygon = PackedVector2Array(-116, 24, -607, 4, -648, 144, -167, 81, 77, 48, 231, 28)
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="L3s2u/Guard_area"]
+position = Vector2(1252, -10)
+polygon = PackedVector2Array(-337, 30, -652, 18, -648, 144, -348, 113)
+
+[node name="Polygon2D" type="Polygon2D" parent="L3s2u/Guard_area"]
+color = Color(0.45601, 0.151842, 0.0907791, 1)
+polygon = PackedVector2Array(-563, -2, -605, 143, -88, 68, 273, 24, -37, 21)
+
+[node name="Polygon2D2" type="Polygon2D" parent="L3s2u/Guard_area"]
+position = Vector2(1214, -9)
+color = Color(0.45601, 0.151842, 0.0907791, 1)
+polygon = PackedVector2Array(-614, 17, -605, 143, -306, 109, -302, 26)
+
+[node name="Label" type="Label" parent="L3s2u/Guard_area"]
+offset_left = -93.0
+offset_top = -216.0
+offset_right = 186.0
+offset_bottom = -168.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ei0p6")
+text = "Red Area is Guard Area"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="Tanks2" type="Sprite2D" parent="."]
+position = Vector2(1392, 747)
+texture = ExtResource("4_ei0p6")
+
+[node name="Tanks3" type="Sprite2D" parent="Tanks2"]
+position = Vector2(80, 28)
+scale = Vector2(0.833333, 0.645161)
+texture = ExtResource("4_ei0p6")
+
+[node name="Tanks4" type="Sprite2D" parent="Tanks2"]
+position = Vector2(-78.75, 15)
+scale = Vector2(0.861905, 0.782258)
+texture = ExtResource("4_ei0p6")
+
+[node name="Player" parent="." instance=ExtResource("7_rtsbj")]
+position = Vector2(147, 916)
+
+[node name="Gaurd" parent="." node_paths=PackedStringArray("detection_trigger_area") instance=ExtResource("8_2pttp")]
+position = Vector2(714, 715)
+detection_trigger_area = NodePath("../L3s2u/Guard_area")
+
+[node name="Gaurd2" parent="." node_paths=PackedStringArray("detection_trigger_area") instance=ExtResource("8_2pttp")]
+position = Vector2(1755, 731)
+detection_trigger_area = NodePath("../L3s2u/Guard_area")
+
+[node name="Tanks" type="Sprite2D" parent="."]
+position = Vector2(450, 815)
+texture = ExtResource("4_ei0p6")
+
+[node name="Box2" type="Sprite2D" parent="."]
+position = Vector2(1077, 918)
+texture = ExtResource("6_nj2oy")
+
+[node name="next_scene" type="Area2D" parent="."]
+position = Vector2(1871, 875)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="next_scene"]
+position = Vector2(33, -166)
+shape = SubResource("RectangleShape2D_6vvnf")
+
+[connection signal="body_entered" from="L3s2u/Guard_area" to="Gaurd" method="_on_guard_area_body_entered"]
+[connection signal="body_entered" from="next_scene" to="." method="_on_next_scene_body_entered"]
+
+[editable path="Gaurd"]
+[editable path="Gaurd2"]

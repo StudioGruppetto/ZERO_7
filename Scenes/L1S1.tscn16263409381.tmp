@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://cg76664rdkann"]
+
+[ext_resource type="Texture2D" uid="uid://cbc0kjxtyu6kj" path="res://Assets/Gma jam/s1u.png" id="1_6k0qt"]
+[ext_resource type="Script" uid="uid://cdohd4q0cl60h" path="res://Scripts/L1S1.gd" id="1_ta1e6"]
+[ext_resource type="Texture2D" uid="uid://2mjp3b113b7" path="res://Assets/Gma jam/s1l.png" id="2_21ll6"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="3_21ll6"]
+[ext_resource type="Texture2D" uid="uid://y1gxxh3rp0rx" path="res://Assets/Gma jam/cellbg.png" id="3_ta1e6"]
+[ext_resource type="Texture2D" uid="uid://ff5odfc0goyt" path="res://Assets/Gma jam/cell gate.png" id="4_2onq4"]
+[ext_resource type="Texture2D" uid="uid://c4q4cbxd6tegf" path="res://Assets/Gma jam/bed.png" id="5_7c8o0"]
+[ext_resource type="Texture2D" uid="uid://daky5b80i1m84" path="res://Assets/Gma jam/light.png" id="6_eai5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ta1e6"]
+bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.93845, 0.93845, 0.93845, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_2onq4"]
+
+[node name="L1S1" type="Node2D"]
+script = ExtResource("1_ta1e6")
+
+[node name="S1u" type="Sprite2D" parent="."]
+position = Vector2(964, 379)
+texture = ExtResource("1_6k0qt")
+
+[node name="S1l" type="Sprite2D" parent="."]
+position = Vector2(961, 917)
+texture = ExtResource("2_21ll6")
+
+[node name="Cellbg" type="Sprite2D" parent="."]
+position = Vector2(1061, 547)
+texture = ExtResource("3_ta1e6")
+
+[node name="CellGate" type="Sprite2D" parent="Cellbg"]
+position = Vector2(-5, 0)
+texture = ExtResource("4_2onq4")
+
+[node name="Bed" type="Sprite2D" parent="Cellbg"]
+position = Vector2(-728, 198)
+texture = ExtResource("5_7c8o0")
+
+[node name="Light" type="Sprite2D" parent="Cellbg"]
+position = Vector2(-992, -265)
+texture = ExtResource("6_eai5j")
+
+[node name="Light2" type="Sprite2D" parent="Cellbg"]
+position = Vector2(459, -265)
+texture = ExtResource("6_eai5j")
+
+[node name="Player" parent="." instance=ExtResource("3_21ll6")]
+position = Vector2(346, 831)
+scene_tools = Array[NodePath]([])
+left_angle_deg = -45.0
+right_angle_deg = 45.0
+rotation_speed = 45.0
+pause_duration = 3.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 198.0
+offset_top = 104.0
+offset_right = 402.0
+offset_bottom = 181.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ta1e6")
+
+[node name="CountDownTimer" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 78.0
+theme_override_fonts/normal_font = SubResource("SystemFont_2onq4")
+bbcode_enabled = true
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

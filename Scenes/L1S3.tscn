@@ -1,0 +1,135 @@
+[gd_scene load_steps=18 format=3 uid="uid://bfq8yldbbhqnw"]
+
+[ext_resource type="Texture2D" uid="uid://dm1rfo1o07mml" path="res://Assets/Gma jam/s3u.png" id="1_g1c66"]
+[ext_resource type="Texture2D" uid="uid://b54m0i11gvqcn" path="res://Assets/Gma jam/room door.png" id="2_bfkgy"]
+[ext_resource type="Texture2D" uid="uid://coebs7nbv0ru3" path="res://Assets/Gma jam/hall.png" id="3_fwwr7"]
+[ext_resource type="Texture2D" uid="uid://daky5b80i1m84" path="res://Assets/Gma jam/light.png" id="4_baro2"]
+[ext_resource type="Texture2D" uid="uid://dnwt8nx4s7cpi" path="res://Assets/Gma jam/s3l.png" id="5_8jf5r"]
+[ext_resource type="Texture2D" uid="uid://ctsct23bak81j" path="res://Assets/Gma jam/table.png" id="6_l4u5p"]
+[ext_resource type="Texture2D" uid="uid://darglhmnsuyxd" path="res://Assets/Gma jam/Bench.png" id="7_owvs4"]
+[ext_resource type="Texture2D" uid="uid://bet04h6e5t377" path="res://Assets/Gma jam/tool box.png" id="8_ydxpo"]
+[ext_resource type="Texture2D" uid="uid://cp84wtcjhp2xo" path="res://Assets/Gma jam/cam hold.png" id="10_8jf5r"]
+[ext_resource type="Texture2D" uid="uid://bs8adbjr85gwm" path="res://Assets/Gma jam/cam.png" id="11_l4u5p"]
+[ext_resource type="PackedScene" uid="uid://cer74brd1fto5" path="res://Scenes/tool.tscn" id="13_l4u5p"]
+[ext_resource type="Texture2D" uid="uid://dsf8kwdw7atgk" path="res://Assets/Gma jam/cam area.png" id="13_ydxpo"]
+[ext_resource type="PackedScene" uid="uid://cmcejrwj5xdxd" path="res://Scenes/Technician.tscn" id="14_l4u5p"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="15_owvs4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4u5p"]
+size = Vector2(111, 529.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owvs4"]
+radius = 199.063
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owvs4"]
+size = Vector2(68, 62)
+
+[node name="L1S3" type="Node2D"]
+
+[node name="S3u" type="Sprite2D" parent="."]
+position = Vector2(957, 371)
+texture = ExtResource("1_g1c66")
+
+[node name="RoomDoor" type="Sprite2D" parent="S3u"]
+position = Vector2(-893, 10)
+texture = ExtResource("2_bfkgy")
+
+[node name="Hall" type="Sprite2D" parent="S3u"]
+position = Vector2(-23, -161)
+texture = ExtResource("3_fwwr7")
+
+[node name="Light" type="Sprite2D" parent="S3u"]
+position = Vector2(-568, -101)
+texture = ExtResource("4_baro2")
+
+[node name="CamHold" type="Sprite2D" parent="S3u"]
+position = Vector2(343, -281)
+texture = ExtResource("10_8jf5r")
+
+[node name="Cam" type="Sprite2D" parent="S3u/CamHold" groups=["security_cameras"]]
+position = Vector2(31, -28)
+texture = ExtResource("11_l4u5p")
+
+[node name="CameraDetect" type="Area2D" parent="S3u/CamHold/Cam" groups=["security_cameras"]]
+
+[node name="CamArea" type="Sprite2D" parent="S3u/CamHold/Cam/CameraDetect"]
+position = Vector2(-284, 456)
+texture = ExtResource("13_ydxpo")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="S3u/CamHold/Cam/CameraDetect"]
+polygon = PackedVector2Array(31, 17, 39, 17, 135, 773, -540, 717)
+
+[node name="Guard_speek" type="Area2D" parent="S3u"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="S3u/Guard_speek"]
+position = Vector2(-779.5, 73.25)
+shape = SubResource("RectangleShape2D_l4u5p")
+
+[node name="S3l" type="Sprite2D" parent="."]
+position = Vector2(957, 858)
+texture = ExtResource("5_8jf5r")
+
+[node name="Table" type="Sprite2D" parent="S3l"]
+position = Vector2(-127, -88)
+texture = ExtResource("6_l4u5p")
+
+[node name="Bench" type="Sprite2D" parent="S3l"]
+position = Vector2(-120, -27)
+texture = ExtResource("7_owvs4")
+
+[node name="ToolBox" type="Sprite2D" parent="."]
+position = Vector2(1768, 576)
+texture = ExtResource("8_ydxpo")
+
+[node name="Tool" parent="." instance=ExtResource("13_l4u5p")]
+position = Vector2(1666, 623)
+
+[node name="Hint" parent="Tool" index="0"]
+visible = true
+
+[node name="ToolBox_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToolBox_Area"]
+position = Vector2(1661, 555)
+shape = SubResource("CircleShape2D_owvs4")
+
+[node name="Technician" parent="." node_paths=PackedStringArray("stop_area") instance=ExtResource("14_l4u5p")]
+position = Vector2(1559, 634)
+stop_area = NodePath("../S3u/Guard_speek")
+
+[node name="Player" parent="." node_paths=PackedStringArray("next_level_indicator", "next_level_area", "surveillance_camera") instance=ExtResource("15_owvs4")]
+position = Vector2(1259, 749)
+scene_tools = Array[NodePath]([NodePath("../Tool")])
+next_level_indicator = NodePath("../Next_level/ColorRect")
+next_level_area = NodePath("../Next_level")
+camera_area_path = NodePath("../S3u/CamHold/Cam/CameraDetect")
+toolbox_area_path = NodePath("../ToolBox_Area")
+player_path = NodePath(".")
+surveillance_camera = NodePath("../S3u/CamHold/Cam")
+
+[node name="Next_level" type="Area2D" parent="."]
+position = Vector2(1256, 910)
+
+[node name="ColorRect" type="ColorRect" parent="Next_level"]
+offset_right = 70.0
+offset_bottom = 61.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Next_level"]
+position = Vector2(35, 31)
+shape = SubResource("RectangleShape2D_owvs4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1522.0
+offset_top = 412.0
+offset_right = 1815.0
+offset_bottom = 491.0
+text = "Press G to Pick a Tool"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[connection signal="area_entered" from="S3u/CamHold/Cam/CameraDetect" to="S3u/CamHold/Cam" method="_on_camera_detect_area_entered"]
+[connection signal="body_entered" from="S3u/CamHold/Cam/CameraDetect" to="S3u/CamHold/Cam" method="_on_camera_detect_body_entered"]
+[connection signal="body_entered" from="ToolBox_Area" to="S3u/CamHold/Cam" method="_on_tool_box_area_body_entered"]
+
+[editable path="Tool"]

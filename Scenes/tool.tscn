@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cer74brd1fto5"]
+
+[ext_resource type="Script" uid="uid://bnnfwssx6wqn2" path="res://Scripts/tool.gd" id="1_fqtr4"]
+[ext_resource type="Texture2D" uid="uid://fp8b6m8iqkrx" path="res://Assets/Gma jam/tools.png" id="1_v307u"]
+[ext_resource type="Texture2D" uid="uid://i8i2i4vn0vqu" path="res://Assets/Gma jam/hint.png" id="2_vue5m"]
+
+[node name="Tool" type="Area2D" groups=["Tool"]]
+script = ExtResource("1_fqtr4")
+
+[node name="Hint" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, 0)
+texture = ExtResource("2_vue5m")
+
+[node name="Tool" type="Sprite2D" parent="."]
+texture = ExtResource("1_v307u")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-35, 7, -36, 10, -31, 11, -21, 8, -17, 10, -12, 9, -8, 13, -5, 14, -2, 11, 4, 7, 33, 9, 36, 6, 34, 3, 22, 2, 24, 0, 31, -1, 35, -4, 35, -11, 31, -14, 25, -13, 5, -7, 6, -5, 1, -5, 0, -6, -2, -6, -3, -4, -10, -7, -14, -7, -25, 1, -24, 4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

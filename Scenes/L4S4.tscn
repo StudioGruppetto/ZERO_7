@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4gm2igt2ubwu"]
+
+[ext_resource type="Texture2D" uid="uid://dpedg80cjvfnx" path="res://Assets/p3/l3s4bg.png" id="1_odqsk"]
+[ext_resource type="Texture2D" uid="uid://31vk382ocvmc" path="res://Assets/p3/l4s4down.png" id="2_nxbl3"]
+[ext_resource type="Texture2D" uid="uid://8hypkwq0wfki" path="res://Assets/p3/l4s4car.png" id="3_o7ka0"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="4_nxbl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7ka0"]
+size = Vector2(208, 193.5)
+
+[node name="L4S4" type="Node2D"]
+
+[node name="L3s4Bg" type="Sprite2D" parent="."]
+position = Vector2(964, 536)
+texture = ExtResource("1_odqsk")
+
+[node name="L4s4Down" type="Sprite2D" parent="."]
+position = Vector2(730, 857)
+texture = ExtResource("2_nxbl3")
+
+[node name="L4s4Car" type="Sprite2D" parent="."]
+position = Vector2(1348, 852)
+texture = ExtResource("3_o7ka0")
+
+[node name="Player" parent="." instance=ExtResource("4_nxbl3")]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1092, 799)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(142, 30.25)
+shape = SubResource("RectangleShape2D_o7ka0")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

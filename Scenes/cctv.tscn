@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfmhw53lk6wsb"]
+
+[ext_resource type="Script" uid="uid://2o06h87oqq22" path="res://Scripts/cctv.gd" id="1_l67nf"]
+[ext_resource type="Texture2D" uid="uid://biw37ajf3t4ae" path="res://Assets/camera/cam hold.png" id="2_m6ttc"]
+[ext_resource type="Texture2D" uid="uid://bplbtvf51ykyi" path="res://Assets/camera/cam.png" id="3_3s8wr"]
+
+[node name="CCTV" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -353.0
+offset_top = -171.0
+offset_right = 803.0
+offset_bottom = 618.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m6ttc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(33, -28)
+texture = ExtResource("3_3s8wr")
+script = ExtResource("1_l67nf")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D/Sprite2D"]
+color = Color(0.0980392, 0.729412, 0.0980392, 1)
+polygon = PackedVector2Array(519.158, 501.695, 415.476, 394.918, 56.5537, 25.281, 743.556, 215.156)
+uv = PackedVector2Array(519.158, 501.695, -133.321, 4.5674, -133.321, 4.5674, 743.556, 215.156)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(299, 202)
+zoom = Vector2(0.895, 0.895)

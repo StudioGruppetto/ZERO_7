@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://c1hdx0hifmyic"]
+
+[ext_resource type="Texture2D" uid="uid://bcf5tlgdu0cfn" path="res://Assets/p3/l4s1bg.png" id="1_3o043"]
+[ext_resource type="Script" uid="uid://lbcq7heetwpf" path="res://Scripts/L4S1.gd" id="1_7abao"]
+[ext_resource type="Texture2D" uid="uid://8pcoi4ebr0su" path="res://Assets/p3/l4s1down.png" id="2_7abao"]
+[ext_resource type="Texture2D" uid="uid://bd6gveuf7b7wr" path="res://Assets/p3/l4ladder.png" id="3_oqo0g"]
+[ext_resource type="Texture2D" uid="uid://bmrbi624fbjqg" path="res://Assets/p3/l4mechine.png" id="4_2diac"]
+[ext_resource type="Texture2D" uid="uid://daky5b80i1m84" path="res://Assets/Gma jam/light.png" id="5_nq6t7"]
+[ext_resource type="Texture2D" uid="uid://cjlff26urbj8w" path="res://Assets/p3/l4self.png" id="6_gu15s"]
+[ext_resource type="Texture2D" uid="uid://c0psj5i3f5td" path="res://Assets/p3/l4washed.png" id="7_f2itx"]
+[ext_resource type="Texture2D" uid="uid://dcxtyhxku8krt" path="res://Assets/p3/budgets.png" id="9_2diac"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="9_oqo0g"]
+[ext_resource type="PackedScene" uid="uid://jb53427i3iba" path="res://Scenes/gaurd.tscn" id="11_nq6t7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb3rf"]
+size = Vector2(286, 242)
+
+[node name="L4S1" type="Node2D"]
+script = ExtResource("1_7abao")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-14, 1049, 96, 878, 3680, 884, 3839, 1080, 3833, -9, -14, 16, -14, 1067, 3820, 1092)
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(2, 4)
+polygon = PackedVector2Array(431, 695, 435, 892, 566, 903, 570, 862, 956, 879, 979, 926, 1764, 926, 2064, 926, 2171, 928, 2176, 690, 958, 716)
+
+[node name="CollisionShape2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(2, 4)
+polygon = PackedVector2Array(2437, 600, 2763, 602, 2769, 949, 2439, 954)
+
+[node name="L4s1Bg" type="Sprite2D" parent="."]
+position = Vector2(1917, 546)
+texture = ExtResource("1_3o043")
+
+[node name="L4s1Down" type="Sprite2D" parent="."]
+position = Vector2(1925, 964)
+texture = ExtResource("2_7abao")
+
+[node name="L4Ladder" type="Sprite2D" parent="."]
+position = Vector2(305, 504)
+texture = ExtResource("3_oqo0g")
+
+[node name="L4Mechine" type="Sprite2D" parent="."]
+position = Vector2(2628, 756)
+texture = ExtResource("4_2diac")
+
+[node name="Light" type="Sprite2D" parent="."]
+position = Vector2(979, 297)
+scale = Vector2(1.46528, 1.05839)
+texture = ExtResource("5_nq6t7")
+
+[node name="Light2" type="Sprite2D" parent="."]
+position = Vector2(2738, 328)
+scale = Vector2(1.98264, 1.14781)
+texture = ExtResource("5_nq6t7")
+
+[node name="L4Self" type="Sprite2D" parent="."]
+position = Vector2(1507, 569)
+texture = ExtResource("6_gu15s")
+
+[node name="L4Washed" type="Sprite2D" parent="."]
+position = Vector2(3017, 827)
+texture = ExtResource("7_f2itx")
+
+[node name="Hide_behind" type="Area2D" parent="."]
+position = Vector2(2862, 734)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hide_behind"]
+position = Vector2(164, 92)
+shape = SubResource("RectangleShape2D_sb3rf")
+
+[node name="Budgets" type="Sprite2D" parent="Hide_behind"]
+position = Vector2(-1559, 66)
+texture = ExtResource("9_2diac")
+
+[node name="Player" parent="." instance=ExtResource("9_oqo0g")]
+position = Vector2(200, 977)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(769, -422)
+
+[node name="Gaurd" parent="." instance=ExtResource("11_nq6t7")]
+position = Vector2(3659, 910)
+
+[connection signal="body_entered" from="Hide_behind" to="." method="_on_hide_behind_body_entered"]

@@ -1,0 +1,134 @@
+[gd_scene load_steps=21 format=3 uid="uid://c20yqedgr61qm"]
+
+[ext_resource type="Script" uid="uid://c3fwd6rw58mfy" path="res://Scripts/L2S1.gd" id="1_al32v"]
+[ext_resource type="Texture2D" uid="uid://bw8sd3okimd8f" path="res://Assets/Gma jam/s2l.png" id="2_al32v"]
+[ext_resource type="Texture2D" uid="uid://ox56evvhsvmw" path="res://Assets/Gma jam/s2u.png" id="3_6a5yo"]
+[ext_resource type="Texture2D" uid="uid://j4jh0ub5i56b" path="res://Assets/Gma jam/hall arrow.png" id="4_25rtd"]
+[ext_resource type="Texture2D" uid="uid://daky5b80i1m84" path="res://Assets/Gma jam/light.png" id="5_jjg7t"]
+[ext_resource type="Texture2D" uid="uid://y1gxxh3rp0rx" path="res://Assets/Gma jam/cellbg.png" id="6_vykoq"]
+[ext_resource type="Texture2D" uid="uid://ff5odfc0goyt" path="res://Assets/Gma jam/cell gate.png" id="7_n4l0m"]
+[ext_resource type="Texture2D" uid="uid://cp84wtcjhp2xo" path="res://Assets/Gma jam/cam hold.png" id="8_21kep"]
+[ext_resource type="Texture2D" uid="uid://bs8adbjr85gwm" path="res://Assets/Gma jam/cam.png" id="9_kuad5"]
+[ext_resource type="Script" uid="uid://dbpclcvjdry7m" path="res://Scripts/democam.gd" id="10_m8o6r"]
+[ext_resource type="Texture2D" uid="uid://dsf8kwdw7atgk" path="res://Assets/Gma jam/cam area.png" id="11_1thoj"]
+[ext_resource type="Texture2D" uid="uid://ci0wm7aqdusnv" path="res://Assets/Gma jam/dustbin.png" id="12_0svso"]
+[ext_resource type="Texture2D" uid="uid://ci6nmy6lysr8c" path="res://Assets/Gma jam/box wood.png" id="13_in0iv"]
+[ext_resource type="PackedScene" uid="uid://db2rs245n3142" path="res://Scenes/Demoplayer.tscn" id="14_o5vrq"]
+[ext_resource type="PackedScene" uid="uid://cer74brd1fto5" path="res://Scenes/tool.tscn" id="15_al32v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccpsx"]
+size = Vector2(1912.5, 742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kktf7"]
+size = Vector2(226, 193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1ywr"]
+size = Vector2(118, 165.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al32v"]
+size = Vector2(289, 317)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfi3g"]
+size = Vector2(121, 1070)
+
+[node name="L2S1" type="Node2D"]
+script = ExtResource("1_al32v")
+
+[node name="S2l" type="Sprite2D" parent="."]
+position = Vector2(960, 909)
+texture = ExtResource("2_al32v")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="S2l"]
+position = Vector2(-960, -909)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="S2l/StaticBody2D"]
+position = Vector2(955.75, 369)
+shape = SubResource("RectangleShape2D_ccpsx")
+
+[node name="S2u" type="Sprite2D" parent="S2l/StaticBody2D"]
+position = Vector2(963, 371)
+texture = ExtResource("3_6a5yo")
+
+[node name="HallArrow" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(613, -204)
+texture = ExtResource("4_25rtd")
+
+[node name="Light" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(-429, -102)
+texture = ExtResource("5_jjg7t")
+
+[node name="Cellbg" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(-935, 174)
+texture = ExtResource("6_vykoq")
+
+[node name="CellGate" type="Sprite2D" parent="S2l/StaticBody2D/S2u/Cellbg"]
+position = Vector2(0, -2)
+texture = ExtResource("7_n4l0m")
+
+[node name="CamHold" type="Sprite2D" parent="S2l/StaticBody2D/S2u"]
+position = Vector2(10, -254)
+texture = ExtResource("8_21kep")
+
+[node name="Cam" type="Sprite2D" parent="S2l/StaticBody2D/S2u/CamHold"]
+position = Vector2(29, -40)
+texture = ExtResource("9_kuad5")
+script = ExtResource("10_m8o6r")
+
+[node name="Camera Detection Area" type="Area2D" parent="S2l/StaticBody2D/S2u/CamHold/Cam"]
+position = Vector2(-1002, -77)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="S2l/StaticBody2D/S2u/CamHold/Cam/Camera Detection Area"]
+polygon = PackedVector2Array(1043, 88, 280, 1016, 1153, 1016)
+
+[node name="CamArea" type="Sprite2D" parent="S2l/StaticBody2D/S2u/CamHold/Cam"]
+position = Vector2(-281, 453)
+texture = ExtResource("11_1thoj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="S2l/StaticBody2D"]
+position = Vector2(1303, 677.5)
+shape = SubResource("RectangleShape2D_kktf7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="S2l/StaticBody2D"]
+position = Vector2(1636, 701.75)
+shape = SubResource("RectangleShape2D_g1ywr")
+
+[node name="Dustbin" type="Sprite2D" parent="S2l/StaticBody2D"]
+position = Vector2(1636, 692)
+texture = ExtResource("12_0svso")
+
+[node name="BoxWood" type="Sprite2D" parent="S2l/StaticBody2D"]
+position = Vector2(1304, 678)
+texture = ExtResource("13_in0iv")
+
+[node name="Tool" parent="." instance=ExtResource("15_al32v")]
+position = Vector2(1768, 844)
+
+[node name="ToolDropArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToolDropArea"]
+position = Vector2(682, 910)
+shape = SubResource("RectangleShape2D_al32v")
+
+[node name="Next_level" type="Area2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Next_level"]
+offset_top = 23.0
+offset_right = 118.0
+offset_bottom = 1092.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Next_level"]
+position = Vector2(57.5, 559)
+shape = SubResource("RectangleShape2D_tfi3g")
+
+[node name="Player" parent="." node_paths=PackedStringArray("next_level_indicator", "next_level_area", "surveillance_camera") instance=ExtResource("14_o5vrq")]
+position = Vector2(1776, 855)
+scene_tools = Array[NodePath]([NodePath("../Tool")])
+tool_drop_zone_path = NodePath("../ToolDropArea")
+next_level_indicator = NodePath("../Next_level/ColorRect")
+next_level_area = NodePath("../Next_level")
+camera_area_path = NodePath("../S2l/StaticBody2D/S2u/CamHold/Cam/Camera Detection Area")
+toolbox_area_path = NodePath("../ToolDropArea")
+player_path = NodePath(".")
+surveillance_camera = NodePath("../S2l/StaticBody2D/S2u/CamHold/Cam")
+
+[editable path="Tool"]
